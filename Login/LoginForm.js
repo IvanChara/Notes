@@ -3,11 +3,7 @@ import { StyleSheet, TextInput, View, TouchableOpacity, StatusBar, Text,
 	KeyboardAvoidingView, AsyncStorage} from 'react-native';
 
 export default class LoginForm extends Component {
-	/**/ signIn = async()=>{
-		await AsyncStorage.setItem('userToken', 'varun')
-
-		this.props.navigation.navigate('AuthLoading')
-	}/**/
+	
 	render() {
 		return ( 
 			<View  style = {styles.container}>
@@ -32,7 +28,7 @@ export default class LoginForm extends Component {
 					style= {styles.input}
 					ref = {(input)=>this.passwordInput = input}
 				/>
-				<TouchableOpacity style={styles.buttonContainer} /**/onPress={this.signIn}/**/> 
+				<TouchableOpacity style={styles.buttonContainer} /**/onPress={this.props.login}/**/> 
 				<Text style = {styles.buttonText}> Login </Text> 
 				</TouchableOpacity>
 			</View>	

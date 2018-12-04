@@ -8,9 +8,8 @@ import {
 } from 'react-native';
 
 export default class SettingsScreen extends Component{
-    signOut = async()=>{
-		AsyncStorage.clear()
-
+    signOut = async () =>{
+		await AsyncStorage.removeItem('userToken')
 		this.props.navigation.navigate('AuthLoading')
 	}
     render(){

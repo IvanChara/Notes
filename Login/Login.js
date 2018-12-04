@@ -1,9 +1,27 @@
 import React from 'react';
-import { StyleSheet, Text, View, Image, KeyboardAvoidingView} from 'react-native';
+import { StyleSheet, Text, View, Image, KeyboardAvoidingView, AsyncStorage} from 'react-native';
 import LoginForm from './LoginForm';
 
 
 export default class Login extends React.Component {
+
+  constructor(){
+    super()
+
+  }
+
+  login = () => {
+  this._storeData()
+  this.props.navigation.navigate('AuthLoading')
+  }
+
+  _storeData = async () => {
+    try {
+      await AsyncStorage.setItem('userToken', 'chara');
+    } catch (error) {
+      console.warn("error")
+    }
+  }
 
   render() {
     return (
@@ -17,7 +35,7 @@ export default class Login extends React.Component {
 
         </View>
         <View style = {styles.formContainer}>
-        <LoginForm />
+        <LoginForm login = {this.login.bind(this)}/>
         </View>
       </KeyboardAvoidingView>
     );
