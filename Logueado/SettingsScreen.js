@@ -9,7 +9,7 @@ import {
 
 export default class SettingsScreen extends Component{
     signOut = async()=>{
-		AsyncStorage.clear
+		AsyncStorage.clear()
 
 		this.props.navigation.navigate('AuthLoading')
 	}
